@@ -1,5 +1,7 @@
 # StardewDex 🍈🌟📇
 
+![screenshot](/src/logo.png)
+
 ## Available at
 # [stardewdex.com](https://stardewdex.com)
 
@@ -17,17 +19,21 @@ Add it your Home Screen and make your game easier. 💝
 
 ## 📋 _Milestones_
 
-- Data
--- router w subs for crops/ppl/recipes/etc, links on header ⛔️
--- all crops added ⛔️
--- all people added ⛔️
--- all recipes added ⛔️
--- all festivals + bundles added ⛔️
+### Data
+- router w subs for crops/ppl/recipes/etc ✅
+- header w links to sub pages ⛔️
+- subpages display all category items ⛔️
+- all crops added ⛔️
+- all people added ⛔️
+- all recipes added ⛔️
+- all festivals + bundles added ⛔️
 
-- Design
--- custom logo + favicons ✅
--- service-worker offline loading ⛔️
--- footer w social media, fb profile, twitter acct ⛔️
+### Design
+- custom logo + favicons ✅
+- secure site with SSL ✅
+- footer w social media ⛔️
+- fb profile, twitter acct ⛔️
+- service-worker offline loading ⛔️
 
 
 ## { Default CRA Readme }

@@ -1,29 +1,11 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { BrowserRouter as Router } from 'react-router-dom';
-import { Route } from 'react-router-dom';
 
 import SimpleMenu from './SimpleMenu.js';
 import logo from './logo.png';
 import './App.css';
 
-function Home () {
-  return (
-    <h1>
-      HOME
-    </h1>
-  )
-}
-
-function Topics () {
-  return (
-    <h1>
-      TOPICS
-    </h1>
-  )
-}
-
-class App extends Component {
+class Items extends Component {
 
   constructor(props) {
     super(props)
@@ -47,20 +29,15 @@ class App extends Component {
     );
 
     return (
-    <Router>
-
       <div className="App">
         
+
         <header className="App-header">
           <img src={logo} className="App-logo pulse" alt="logo" />
           <SimpleMenu />
           <h2>
-            Your Guide to Pelican Town
+            ITEMS
           </h2>
-          <Route exact path='/' component={Home} />
-          <Route path='/topics' component={Topics} />
-          <Link to='/'>Home</Link>
-          <Link to='/topics'>Topics</Link>
           <h3>
             Launching June 2019
           </h3>
@@ -80,9 +57,8 @@ class App extends Component {
         </section>
 
       </div>
-    </Router>
     );
   }
 }
 
-export default App;
+export default Items;
