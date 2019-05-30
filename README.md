@@ -22,7 +22,10 @@ Add it your Home Screen and make your game easier. 💝
 ### Data
 - router w subs for crops/ppl/recipes/etc ✅
 - header w links to sub pages ⛔️
+<<<<<<< HEAD
 - subpages display all category items ⛔️
+=======
+>>>>>>> 53fa396b0809c428a3ae6227f6b4e9c8a0db2648
 - all crops added ⛔️
 - all people added ⛔️
 - all recipes added ⛔️
