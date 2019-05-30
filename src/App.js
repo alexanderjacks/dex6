@@ -1,27 +1,37 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { BrowserRouter as Router } from 'react-router-dom';
-import { Route } from 'react-router-dom';
+import { 
+  BrowserRouter as Router,
+  Route,
+  Link,
+} from 'react-router-dom';
 
-import SimpleMenu from './SimpleMenu.js';
+import Items from './Items.js';
+import People from './People.js';
+import Recipes from './Recipes.js';
+
 import logo from './logo.png';
 import './App.css';
 
-function Home () {
-  return (
-    <h1>
-      HOME
-    </h1>
-  )
-}
+const routes = [
+  { path: '/',
+    exact: true,
+    sidebar: () => <div>home!</div>,
+    main: () => <h2>Home</h2>
+  },
+  { path: '/items',
+    sidebar: () => <div>items!</div>,
+    main: () => <h1>Items</h1>
+  },
+  { path: '/people',
+    sidebar: () => <div>people!</div>,
+    main: () => <h1>People</h1>
+  },
+  { path: '/recipes',
+    sidebar: () => <div>recipes!</div>,
+    main: () => <h1>Recipes</h1>
+  }
+]
 
-function Topics () {
-  return (
-    <h1>
-      TOPICS
-    </h1>
-  )
-}
 
 class App extends Component {
 
@@ -47,40 +57,53 @@ class App extends Component {
     );
 
     return (
-    <Router>
-
       <div className="App">
-        
-        <header className="App-header">
-          <img src={logo} className="App-logo pulse" alt="logo" />
-          <SimpleMenu />
-          <h2>
-            Your Guide to Pelican Town
-          </h2>
-          <Route exact path='/' component={Home} />
-          <Route path='/topics' component={Topics} />
-          <Link to='/'>Home</Link>
-          <Link to='/topics'>Topics</Link>
-          <h3>
-            Launching June 2019
-          </h3>
-          <a
-            className="App-link"
-            href="https://www.alexanderjacks.info"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Built By AlexJacksApps
-          </a>
-        </header>
-        <section>
-         <ul>
-          {items}
-         </ul>
-        </section>
+        <Router><div>
+          <header className="App-header">
+            <img src={logo} className="App-logo pulse" alt="logo" />
 
+            <h2>
+              Your Guide to Pelican Town
+            </h2>
+            <h3>
+              Launching June 2019
+            </h3>
+            {routes.map((route) => (
+              <Route
+                key={route.path}
+                path={route.path}
+                exact={route.exact}
+                component={route.sidebar}
+              />
+            ))}
+            <a
+              className="App-link"
+              href="https://www.alexanderjacks.info"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Built By AlexJacksApps
+            </a>
+          </header>
+          <section>
+             <div style={{ display: 'flex' }}>
+              <div style={{
+                padding: '10px',
+                width: '40%',
+                background: '#f0f0f0'
+              }}>
+              <ul style={{ listStyleType: 'none', padding: 0 }}>
+                <li><Link to="/">Home</Link></li>
+                <li><Link to="/items">Items</Link></li>
+                <li><Link to="/people">People</Link></li>
+                <li><Link to="/recipes">Recipes</Link></li>
+              </ul>
+            </div>
+          </div>
+          </section>
+        </div></Router>
       </div>
-    </Router>
+
     );
   }
 }
