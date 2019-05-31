@@ -59,23 +59,53 @@ class App extends Component {
     return (
       <div className="App">
         <Router><div>
-          <header className="App-header">
-            <img src={logo} className="App-logo pulse" alt="logo" />
+          <header style={{
+                display: 'flex',
+                flexDirection: 'row',
+                justifyContent: 'spaceBetween'
+              }}>
+              <div style={{
+                  flex: '2',
+                  alignItems: 'middle',
+                }}>
+              <img src={logo} 
+                  className="App-logo pulse"
+                  alt="logo"
+                  style={{
+                    maxWidth: '228px',
+                    maxHeight: '113px',
+                    minWidth: '228px',
+                    minHeight: '113px',
 
-            <h2>
-              Your Guide to Pelican Town
-            </h2>
-            <h3>
-              Launching June 2019
-            </h3>
-            {routes.map((route) => (
+                  }} />
+             </div>
+              <div style={{
+                flex: '2',
+                padding: '10px',
+                width: '40%',
+                background: '#f0f0f0'
+              }}>
+                <ul style={{ listStyleType: 'none', padding: 0 }}>
+                  <li><Link to="/">Home</Link></li>
+                  <li><Link to="/items">Items</Link></li>
+                  <li><Link to="/people">People</Link></li>
+                  <li><Link to="/recipes">Recipes</Link></li>
+                </ul>
+              </div>
+          </header>
+          <section className="App-header">
+            <h1>
+              {routes.map((route) => (
               <Route
                 key={route.path}
                 path={route.path}
                 exact={route.exact}
                 component={route.sidebar}
               />
-            ))}
+              ))}
+            </h1>
+            <h2>Your Guide to Pelican Town</h2>
+            <h3>Launching June 2019</h3>
             <a
               className="App-link"
               href="https://www.alexanderjacks.info"
@@ -84,22 +114,6 @@ class App extends Component {
             >
               Built By AlexJacksApps
             </a>
-          </header>
-          <section>
-             <div style={{ display: 'flex' }}>
-              <div style={{
-                padding: '10px',
-                width: '40%',
-                background: '#f0f0f0'
-              }}>
-              <ul style={{ listStyleType: 'none', padding: 0 }}>
-                <li><Link to="/">Home</Link></li>
-                <li><Link to="/items">Items</Link></li>
-                <li><Link to="/people">People</Link></li>
-                <li><Link to="/recipes">Recipes</Link></li>
-              </ul>
-            </div>
-          </div>
           </section>
         </div></Router>
       </div>

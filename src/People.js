@@ -30,9 +30,12 @@ class People extends Component {
 
     return (
       <div className="App">
-        
-
-        <header className="App-header">
+        <header>
+         <ul>
+          {items}
+         </ul>
+        </header>
+        <section className="App-header">
           <img src={logo} className="App-logo pulse" alt="logo" />
           <SimpleMenu />
           <h2>
@@ -49,11 +52,6 @@ class People extends Component {
           >
             Built By AlexJacksApps
           </a>
-        </header>
-        <section>
-         <ul>
-          {items}
-         </ul>
         </section>
 
       </div>
