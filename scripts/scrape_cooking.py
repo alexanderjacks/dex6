@@ -26,7 +26,7 @@ option.add_argument("--incognito")
 browser = webdriver.Chrome(executable_path='./chromedriver', chrome_options=option)
 
 # surfs to this URL
-browser.get("https://stardewvalleywiki.com/Bundles")
+browser.get("https://stardewvalleywiki.com/Cooking")
 
 
 ###
@@ -47,20 +47,20 @@ except TimeoutException:
 ### scraping Bundle info; 2 metadata elements: name & image alt 
 
 # scraping bundle images, they are the only element w width='136'
-results = browser.find_elements_by_xpath("//img[@width='136']")
+results = browser.find_elements_by_xpath("//img[@width='48']")
 # parsing returned objects into desired items ('list comprehension')
-bundle_name = [x.get_attribute('alt') for x in results]
+recipe_name = [x.get_attribute('alt') for x in results]
 image_URL = [x.get_attribute('src') for x in results]
 
 
 ### display scraping results in Terminal
 
-print('Bundles of Pelican Town:')
+print('Recipes of Pelican Town:')
 ## zip() matches the scraped elements to each other
-for bundle_name, image_URL in zip(bundle_name, image_URL):
+for recipe_name, image_URL in zip(recipe_name, image_URL):
 	png_name = image_URL.split('/')[-1]
 #	test of variables
-	print(bundle_name + ": Let's use filename " + png_name + " when we save this resource ==> " + image_URL + '\n')
+	print(recipe_name + ": Let's use filename " + png_name + " when we save this resource ==> " + image_URL + '\n')
 ### next step is to save each image to a local file
 #	download image	
 	rawImgData = requests.get(image_URL, stream=True)

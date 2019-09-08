@@ -18,15 +18,15 @@ driver = webdriver.Chrome('./chromedriver')
 # read here if your device has problems w CHROMEDRIVER PATH stuff:
 # https://github.com/SeleniumHQ/selenium/wiki/ChromeDriver
 
-# surfs Incognito => scrapes better ^_^
+# surfs incognito => scrapes better ^_^
 option = webdriver.ChromeOptions()
 option.add_argument("--incognito")
 
-# launches Chrome
+# launches Chrome, invokes incognito mode
 browser = webdriver.Chrome(executable_path='./chromedriver', chrome_options=option)
 
 # surfs to this URL
-browser.get("https://stardewvalleywiki.com/Bundles")
+browser.get("https://stardewvalleywiki.com/Fish")
 
 
 ###
@@ -47,20 +47,20 @@ except TimeoutException:
 ### scraping Bundle info; 2 metadata elements: name & image alt 
 
 # scraping bundle images, they are the only element w width='136'
-results = browser.find_elements_by_xpath("//th[@id='136']")
+results = browser.find_elements_by_xpath("//img[@width='48']")
 # parsing returned objects into desired items ('list comprehension')
-bundle_name = [x.get_attribute('alt') for x in results]
-
+fish_name = [x.get_attribute('alt') for x in results]
+image_URL = [x.get_attribute('src') for x in results]
 
 
 ### display scraping results in Terminal
 
-print('Bundles of Pelican Town:')
+print('Fish of Pelican Town:')
 ## zip() matches the scraped elements to each other
-for bundle_name, image_URL in zip(bundle_name, image_URL):
+for fish_name, image_URL in zip(fish_name, image_URL):
 	png_name = image_URL.split('/')[-1]
 #	test of variables
-	print(bundle_name + ": Let's use filename " + png_name + " when we save this resource ==> " + image_URL + '\n')
+	print(fish_name + ": Let's use filename " + png_name + " when we save this resource ==> " + image_URL + '\n')
 ### next step is to save each image to a local file
 #	download image	
 	rawImgData = requests.get(image_URL, stream=True)
@@ -69,4 +69,4 @@ for bundle_name, image_URL in zip(bundle_name, image_URL):
 		for chunk in rawImgData.iter_content(chunk_size=1024):
 			fd.write(chunk)
 
-		
+

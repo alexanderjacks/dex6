@@ -12,6 +12,14 @@
 .env
 /build
 
+# script output
+/scripts/artisan
+/scripts/cooking
+/scripts/crafting
+/scripts/crops
+/scripts/fish
+/scripts/minerals
+
 # misc
 .DS_Store
 .env.local
